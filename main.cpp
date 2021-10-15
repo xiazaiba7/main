@@ -227,7 +227,8 @@ int main(int argc,char **argv){
   			}
   		}
 	}
-	TakeWord();
+	if(TakeWord()==-1)
+  		return -1;
 	if(top!=9)
 	{
 		return -1;
