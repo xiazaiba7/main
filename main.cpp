@@ -200,7 +200,8 @@ int main(int argc,char **argv){
 	char w;
  	int i,j;
 
-	in = fopen(argv[1],"r");
+	in = fopen("s.txt","r");
+	out = fopen("out.txt","w");
  //freopen("s.txt","r",stdin);
  
 	length=0;
@@ -240,35 +241,35 @@ int main(int argc,char **argv){
 	{
 		if(q[i]==1)
 		{
-			printf("define dso_local i32 ");
+			fprintf(out,"define dso_local i32 ");
 		}
 		else if(q[i]==2)
 		{
-			printf("@main");
+			fprintf(out,"@main");
 		}
 		else if(q[i]==3)
 		{
-			printf("(");
+			fprintf(out,"(");
 		}
 		else if(q[i]==4)
 		{
-			printf(")");
+			fprintf(out,")");
 		}
 		else if(q[i]==5)
 		{
-			printf("{\n");
+			fprintf(out,"{\n");
 		}
 		else if(q[i]==6)
 		{
-			printf("    ret ");
+			fprintf(out,"    ret ");
 		}
 		else if(q[i]==7)
 		{
-			printf("i32 %d\n",result);
+			fprintf(out,"i32 %d\n",result);
 		}
 		else if(q[i]==9)
 		{
-			printf("}\n");
+			fprintf(out,"}\n");
 		}
 	}
 	return 0;
