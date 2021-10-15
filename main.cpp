@@ -78,7 +78,7 @@ int Number(string s,int n)
 	int j=n+1;
 	int flag=1;
 	int ret;
-	if(letter[n]=="0"&&letter[n+1]=="x")//十六进制 
+	if(letter[n]=="0"&&letter[n+1]=="x"||letter[n]=="0"&&letter[n+1]=="X")//十六进制 
 	{
  		j++;
  		while(1)
@@ -97,7 +97,7 @@ int Number(string s,int n)
 			}
 		}
 	}
-	else if(letter[n]=="0"&&letter[n+1]!="x")//八进制 
+	else if(letter[n]=="0"&&letter[n+1]!="x"letter[n+1]!="X")//八进制 
 	{
 		while(1)
 		{
@@ -211,7 +211,6 @@ int main(int argc,char **argv){
  		int len=strlen(line);
 	 	for(int k=0;line[k]>0;k++)
 		{
-			w=line[k];
 			if(line[k]==47&&line[k+1]==42)//是/*形注释 
 			{
 				flag=1;
