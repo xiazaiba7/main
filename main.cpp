@@ -200,8 +200,8 @@ int main(int argc,char **argv){
 	char w;
  	int i,j;
 
-	in = fopen("s.txt","r");
-	out = fopen("out.txt","w");
+	in = fopen(argv[1],"r");
+	out = fopen(argv[2],"w");
  //freopen("s.txt","r",stdin);
  
 	length=0;
