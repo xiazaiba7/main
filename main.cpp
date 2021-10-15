@@ -203,13 +203,34 @@ int main(int argc,char **argv){
 	in = fopen(argv[1],"r");
 	out = fopen(argv[2],"w");
  //freopen("s.txt","r",stdin);
- 
+ 	int flag=0;
 	length=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
  	{
+ 		int len=strlen(line);
 	 	for(int k=0;line[k]>0;k++)
 		{
+			w=line[k];
+			if(line[k]==47&&line[k+1]==42)//是/*形注释 
+			{
+				flag=1;
+			} 
+			while(flag==1&&k<len)
+			{
+				k++;
+				if(line[k]==42&&line[k+1]==47)
+				{
+					flag=0;
+					k+=2;
+				}
+			}
+			if(line[k]==47&&line[k+1]==47)//是//形注释 
+			{
+				if(TakeWord()==-1)
+  					return -1;
+				break;
+			}
 			w=line[k];
   			if(w!=' '&&w!=0&&w!='\t'&&w!='\n')
 			{
@@ -220,6 +241,10 @@ int main(int argc,char **argv){
   			{
   				if(TakeWord()==-1)
   				return -1;
+  				if(w=='\n')
+  				{
+  					break;
+				  }
   			}
   			else
   			{
