@@ -97,7 +97,7 @@ int Number(string s,int n)
 			}
 		}
 	}
-	else if(letter[n]=="0"&&letter[n+1]!="x"letter[n+1]!="X")//八进制 
+	else if(letter[n]=="0"&&letter[n+1]!="x"&&letter[n+1]!="X")//八进制 
 	{
 		while(1)
 		{
@@ -200,8 +200,8 @@ int main(int argc,char **argv){
 	char w;
  	int i,j;
 
-	in = fopen(argv[1],"r");
-	out = fopen(argv[2],"w");
+	in = fopen("s.txt","r");
+	out = fopen("out.txt","w");
  //freopen("s.txt","r",stdin);
  	int flag=0;
 	length=0;
