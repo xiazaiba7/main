@@ -5,7 +5,7 @@
 #include <sstream>
 #include <queue>
 using namespace std;
-int length; 
+int length=0; 
 int num;
 FILE *in,*out;
 string letter[1000];
@@ -204,7 +204,6 @@ int main(int argc,char **argv){
 	out = fopen(argv[2],"w");
  //freopen("s.txt","r",stdin);
  	int flag=0;
-	length=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
  	{
@@ -227,7 +226,7 @@ int main(int argc,char **argv){
 			if(line[k]==47&&line[k+1]==47)//是//形注释 
 			{
 				if(TakeWord()==-1)
-  					return -1;
+  					return 3;
 				break;
 			}
 			w=line[k];
@@ -239,7 +238,7 @@ int main(int argc,char **argv){
   			else if(w==' '||w=='\t'||w=='\n')
   			{
   				if(TakeWord()==-1)
-  				return -1;
+  				return 3;
   				if(w=='\n')
   				{
   					break;
@@ -252,15 +251,15 @@ int main(int argc,char **argv){
   		}
 	}
 	if(TakeWord()==-1)
-  		return -1;
+  		return 3;
 	if(top!=9)
 	{
-		return -1;
+		return 3;
 	}
 	for(i=1;i<=top;i++)
 	{
 		if(q[i]!=i)
-			return -1;
+			return 3;
 	} 
 	for(i=1;i<=top;i++)
 	{
@@ -294,7 +293,7 @@ int main(int argc,char **argv){
 		}
 		else if(q[i]==9)
 		{
-			fprintf(out,"}\n");
+			fprintf(out,"}");
 		}
 	}
 	return 0;
