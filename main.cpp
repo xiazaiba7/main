@@ -198,6 +198,11 @@ int TakeWord()
 		{
 			num++;
 		}
+		else
+		{
+			printf("%s\n",str.c_str());
+			return -4;
+		} 
 
 	}
 	return 0;
