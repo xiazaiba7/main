@@ -144,7 +144,7 @@ int TakeWord()
   		string str;
   		string strnew;
   		str=letter[num];
-  		if(str>="a"&&str<="z")
+  		if(str>="a"&&str<="z"||str>="A"&&str<="Z")
 		{
 			int x=judgeword(str,num);	
 			if(x==1)
