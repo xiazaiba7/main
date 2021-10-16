@@ -200,7 +200,7 @@ int TakeWord()
 		}
 		else
 		{
-			printf("%s",str.c_str());
+			printf("%c\n",str.c_str()[0]);
 			return -4;
 		} 
 
