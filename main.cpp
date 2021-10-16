@@ -194,6 +194,10 @@ int TakeWord()
 				return -1;//出现多个数字 
 			}
 		} 
+		else
+		{
+			return -1;
+		} 
 	}
 	return 0;
 }
@@ -203,6 +207,7 @@ int main(int argc,char **argv){
 
 	in = fopen(argv[1],"r");
 	out = fopen(argv[2],"w");
+ //freopen("s.txt","r",stdin);
  	int flag=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
@@ -242,7 +247,7 @@ int main(int argc,char **argv){
   				if(w=='\n')
   				{
   					break;
-				  }
+				}
   			}
   			else
   			{
