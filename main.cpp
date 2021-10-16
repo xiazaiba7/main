@@ -174,7 +174,7 @@ int TakeWord()
 			}
 			else
 			{
-				return -1;
+				return -2;
 			}
 		}
 		else if(str>="0"&&str<="9")
@@ -191,7 +191,7 @@ int TakeWord()
 			}
 			else
 			{
-				return -1;//出现多个数字 
+				return -3;//出现多个数字 
 			}
 		} 
 		else if(str=="block")
@@ -200,7 +200,7 @@ int TakeWord()
 		}
 		else
 		{
-			return -1;
+			return -4;
 		} 
 	}
 	return 0;
@@ -239,10 +239,11 @@ int main(int argc,char **argv){
 			 } 
 			if(line[k]==47&&line[k+1]==47)//是//形注释 
 			{
-				if(TakeWord()==-1)
+				int pe=TakeWord();
+				if(pe!=0)
 				{
-					printf("7\n");
-  					return 7;  
+					printf("%d\n",pe);
+  					return 5;
   				}
 				break;
 			}
@@ -267,9 +268,10 @@ int main(int argc,char **argv){
   			}
   		}
 	}
-	if(TakeWord()==-1)
+	int te=TakeWord();
+	if(te!=0)
 	{
-		printf("5\n");
+		printf("%d\n",te);
   		return 5;
   	}
 	if(top!=9)
