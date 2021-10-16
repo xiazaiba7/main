@@ -200,8 +200,7 @@ int TakeWord()
 		}
 		else
 		{
-			printf("这里有错\n");
-			return -4;
+			num++;
 		} 
 	}
 	return 0;
