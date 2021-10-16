@@ -205,8 +205,8 @@ int main(int argc,char **argv){
 	char w;
  	int i,j;
 
-	in = fopen(argv[1],"r");
-	out = fopen(argv[2],"w");
+	in = fopen("s.txt","r");
+	out = fopen("out.txt","w");
  	int flag=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
@@ -262,10 +262,6 @@ int main(int argc,char **argv){
 	}
 	if(TakeWord()==-1)
   		return 5;
-  	for(i=1;i<=top;i++)
-  	{
-  		printf("%d",q[i]);
-	  }
 	if(top!=9)
 	{
 		return 4;
