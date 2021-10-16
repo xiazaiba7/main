@@ -120,7 +120,7 @@ int Number(string s,int n)
 	{
 		while(1)
 		{
-			if(isnonezero(letter[j]))
+			if(letter[j]>="0"&&letter[j]<="9")
 			{
 				s=(s+letter[j]).c_str();
    				j++;
