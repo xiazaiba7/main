@@ -194,7 +194,7 @@ int TakeWord()
 				return -3;//出现多个数字 
 			}
 		} 
-		else if(str=="block")
+		else if(str=="block"||str=="")
 		{
 			num++;
 		}
