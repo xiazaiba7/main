@@ -198,10 +198,7 @@ int TakeWord()
 		{
 			num++;
 		}
-		else
-		{
-			return -4;
-		} 
+
 	}
 	return 0;
 }
