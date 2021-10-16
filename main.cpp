@@ -236,7 +236,10 @@ int main(int argc,char **argv){
 			if(line[k]==47&&line[k+1]==47)//是//形注释 
 			{
 				if(TakeWord()==-1)
-  					return 7;
+				{
+					fprintf(out,"7");
+  					return 7;  
+  				}
 				break;
 			}
 			w=line[k];
@@ -248,7 +251,11 @@ int main(int argc,char **argv){
   			else if(w==' '||w=='\t'||w=='\n')
   			{
   				if(TakeWord()==-1)
-  				return 6;
+  				{
+  					fprintf(out,"6");
+  					return 6;
+  					
+  				}
   				if(w=='\n')
   				{
   					break;
@@ -261,15 +268,22 @@ int main(int argc,char **argv){
   		}
 	}
 	if(TakeWord()==-1)
+	{
+		fprintf(out,"5")
   		return 5;
+  	}
 	if(top!=9)
 	{
+		fprintf(out,"4");
 		return 4;
 	}
 	for(i=1;i<=top;i++)
 	{
 		if(q[i]!=i)
+		{
+			fprintf(out,"3");
 			return 3;
+		}
 	} 
 	for(i=1;i<=top;i++)
 	{
