@@ -269,7 +269,7 @@ int main(int argc,char **argv){
 	}
 	if(TakeWord()==-1)
 	{
-		fprintf(out,"5")
+		fprintf(out,"5");
   		return 5;
   	}
 	if(top!=9)
