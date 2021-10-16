@@ -238,7 +238,7 @@ int main(int argc,char **argv){
 				if(TakeWord()==-1)
 				{
 					fprintf(out,"7");
-  					return 7;  
+  					return 0;  
   				}
 				break;
 			}
@@ -253,7 +253,7 @@ int main(int argc,char **argv){
   				if(TakeWord()==-1)
   				{
   					fprintf(out,"6");
-  					return 6;
+  					return 0;
   					
   				}
   				if(w=='\n')
@@ -270,19 +270,19 @@ int main(int argc,char **argv){
 	if(TakeWord()==-1)
 	{
 		fprintf(out,"5");
-  		return 5;
+  		return 0;
   	}
 	if(top!=9)
 	{
 		fprintf(out,"4");
-		return 4;
+		return 0;
 	}
 	for(i=1;i<=top;i++)
 	{
 		if(q[i]!=i)
 		{
 			fprintf(out,"3");
-			return 3;
+			return 0;
 		}
 	} 
 	for(i=1;i<=top;i++)
