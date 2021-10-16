@@ -32,7 +32,7 @@ int symbol(string s)
  	int j=n+1;
  	while(1)
 	{
-		if(letter[j]>="a"&&letter[j]<="z"||letter[j]>="A"&&letter[j]<="Z")
+		if((letter[j]>="a"&&letter[j]<="z"||letter[j]>="0"&&letter[j]<="9"||letter[j]>="A"&&letter[j]<="Z"||letter[j]=="_")&&letter[j]!="block")
 		{
    			s=(s+letter[j]).c_str();
    			j++;
@@ -144,7 +144,7 @@ int TakeWord()
   		string str;
   		string strnew;
   		str=letter[num];
-  		if(str>="a"&&str<="z"||str>="A"&&str<="Z")
+  		if((str>="a"&&str<="z"||str>="A"&&str<="Z")&&str!="block")
 		{
 			int x=judgeword(str,num);	
 			if(x==1)
@@ -194,6 +194,10 @@ int TakeWord()
 				return -1;//出现多个数字 
 			}
 		} 
+		else if(str=="block")
+		{
+			num++;
+		}
 		else
 		{
 			return -1;
@@ -238,7 +242,7 @@ int main(int argc,char **argv){
 				if(TakeWord()==-1)
 				{
 					printf("7\n");
-  					return 0;  
+  					return 7;  
   				}
 				break;
 			}
@@ -250,12 +254,8 @@ int main(int argc,char **argv){
   			} 
   			else if(w==' '||w=='\t'||w=='\n')
   			{
-  				if(TakeWord()==-1)
-  				{
-  					printf("6\n");
-  					return 0;
-  					
-  				}
+  				letter[length]="block";
+  				length++;
   				if(w=='\n')
   				{
   					break;
@@ -270,19 +270,19 @@ int main(int argc,char **argv){
 	if(TakeWord()==-1)
 	{
 		printf("5\n");
-  		return 0;
+  		return 5;
   	}
 	if(top!=9)
 	{
 		printf("4\n");
-		return 0;
+		return 4;
 	}
 	for(i=1;i<=top;i++)
 	{
 		if(q[i]!=i)
 		{
 			printf("3\n");
-			return 0;
+			return 3;
 		}
 	} 
 	for(i=1;i<=top;i++)
