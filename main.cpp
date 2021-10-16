@@ -26,13 +26,13 @@ int symbol(string s)
 		return 8;
 	else
 		return 0;
- } 
+} 
  int judgeword(string s,int n)
  {
  	int j=n+1;
  	while(1)
 	{
-		if(letter[j]>="a"&&letter[j]<="z")
+		if(letter[j]>="a"&&letter[j]<="z"||letter[j]>="0"&&letter[j]<="9")
 		{
    			s=(s+letter[j]).c_str();
    			j++;
@@ -78,8 +78,9 @@ int Number(string s,int n)
 	int j=n+1;
 	int flag=1;
 	int ret;
-	if(letter[n]=="0"&&letter[n+1]=="x"||letter[n]=="0"&&letter[n+1]=="X")//十六进制 
+	if(s=="0"&&letter[j]=="x"||s=="0"&&letter[j]=="X")//十六进制 
 	{
+		s=(s+letter[j]).c_str();
  		j++;
  		while(1)
  		{
@@ -97,7 +98,7 @@ int Number(string s,int n)
 			}
 		}
 	}
-	else if(letter[n]=="0"&&letter[n+1]!="x"&&letter[n+1]!="X")//八进制 
+	else if(s=="0"&&letter[j]!="x"&&letter[j]!="X")//八进制 
 	{
 		while(1)
 		{
@@ -115,7 +116,7 @@ int Number(string s,int n)
 			}
 		}
 	}
-	else if(isnonezero(letter[n]))
+	else if(isnonezero(s))
 	{
 		while(1)
 		{
@@ -202,6 +203,98 @@ int main(int argc,char **argv){
 
 	in = fopen(argv[1],"r");
 	out = fopen(argv[2],"w");
-	fprintf(out,"1");
+ 	int flag=0;
+	char line[105];
+	while(fgets(line,100,in)!=NULL)
+ 	{
+ 		int len=strlen(line);
+	 	for(int k=0;line[k]>0;k++)
+		{
+			if(line[k]==47&&line[k+1]==42)//是/*形注释 
+			{
+				flag=1;
+			} 
+			while(flag==1&&k<len)
+			{
+				k++;
+				if(line[k]==42&&line[k+1]==47)
+				{
+					flag=0;
+					k+=2;
+				}
+			}
+			if(line[k]==47&&line[k+1]==47)//是//形注释 
+			{
+				if(TakeWord()==-1)
+  					return 3;
+				break;
+			}
+			w=line[k];
+  			if(w!=' '&&w!=0&&w!='\t'&&w!='\n')
+			{
+   				letter[length]=w;
+   				length++;
+  			} 
+  			else if(w==' '||w=='\t'||w=='\n')
+  			{
+  				if(TakeWord()==-1)
+  				return 3;
+  				if(w=='\n')
+  				{
+  					break;
+				  }
+  			}
+  			else
+  			{
+  				break;
+  			}
+  		}
+	}
+	if(TakeWord()==-1)
+  		return 3;
+	if(top!=9)
+	{
+		return 3;
+	}
+	for(i=1;i<=top;i++)
+	{
+		if(q[i]!=i)
+			return 3;
+	} 
+	for(i=1;i<=top;i++)
+	{
+		if(q[i]==1)
+		{
+			fprintf(out,"define dso_local i32 ");
+		}
+		else if(q[i]==2)
+		{
+			fprintf(out,"@main");
+		}
+		else if(q[i]==3)
+		{
+			fprintf(out,"(");
+		}
+		else if(q[i]==4)
+		{
+			fprintf(out,")");
+		}
+		else if(q[i]==5)
+		{
+			fprintf(out,"{\n");
+		}
+		else if(q[i]==6)
+		{
+			fprintf(out,"    ret ");
+		}
+		else if(q[i]==7)
+		{
+			fprintf(out,"i32 %d\n",result);
+		}
+		else if(q[i]==9)
+		{
+			fprintf(out,"}");
+		}
+	}
 	return 0;
 }
