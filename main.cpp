@@ -32,7 +32,7 @@ int symbol(string s)
  	int j=n+1;
  	while(1)
 	{
-		if(letter[j]>="a"&&letter[j]<="z"||letter[j]>="0"&&letter[j]<="9")
+		if(letter[j]>="a"&&letter[j]<="z"||letter[j]>="A"&&letter[j]<="Z")
 		{
    			s=(s+letter[j]).c_str();
    			j++;
