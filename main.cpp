@@ -189,10 +189,7 @@ int TakeWord()
 				q[++top] = 7;
 				result = ret;
 			}
-			else
-			{
-				return -3;//出现多个数字 
-			}
+
 		} 
 		else if(str=="block"||str=="")
 		{
