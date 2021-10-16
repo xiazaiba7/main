@@ -207,7 +207,6 @@ int main(int argc,char **argv){
 
 	in = fopen(argv[1],"r");
 	out = fopen(argv[2],"w");
- //freopen("s.txt","r",stdin);
  	int flag=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
@@ -219,19 +218,25 @@ int main(int argc,char **argv){
 			{
 				flag=1;
 			} 
-			while(flag==1&&k<len)
+			if(flag==1)
 			{
-				k++;
-				if(line[k]==42&&line[k+1]==47)
+				if(k>0)
 				{
-					flag=0;
-					k+=2;
+					if(line[k-1]==42&&line[k]==47)
+					{
+						flag=0;
+					}
 				}
+				continue;
 			}
+			if(k>=len)
+			{
+				break;
+			 } 
 			if(line[k]==47&&line[k+1]==47)//是//形注释 
 			{
 				if(TakeWord()==-1)
-  					return 3;
+  					return 7;
 				break;
 			}
 			w=line[k];
@@ -243,7 +248,7 @@ int main(int argc,char **argv){
   			else if(w==' '||w=='\t'||w=='\n')
   			{
   				if(TakeWord()==-1)
-  				return 3;
+  				return 6;
   				if(w=='\n')
   				{
   					break;
@@ -256,10 +261,14 @@ int main(int argc,char **argv){
   		}
 	}
 	if(TakeWord()==-1)
-  		return 3;
+  		return 5;
+  	for(i=1;i<=top;i++)
+  	{
+  		printf("%d",q[i]);
+	  }
 	if(top!=9)
 	{
-		return 3;
+		return 4;
 	}
 	for(i=1;i<=top;i++)
 	{
