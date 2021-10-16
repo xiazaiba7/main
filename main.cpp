@@ -144,7 +144,7 @@ int TakeWord()
   		string str;
   		string strnew;
   		str=letter[num];
-  		if((str>="a"&&str<="z"||str>="A"&&str<="Z")&&str!="block")
+  		if((str>="a"&&str<="z"||str>="A"&&str<="Z"||str=="_")&&str!="block")
 		{
 			int x=judgeword(str,num);	
 			if(x==1)
@@ -177,7 +177,7 @@ int TakeWord()
 				return -2;
 			}
 		}
-		else if(str>="0"&&str<="9")
+		else if(str>="0" && str<="9")
 		{
 			int ret=Number(str,num);
 			if(ret==-1)
@@ -200,10 +200,9 @@ int TakeWord()
 		}
 		else
 		{
-			printf("%c\n",str.c_str()[0]);
+			printf("这里有错\n");
 			return -4;
 		} 
-
 	}
 	return 0;
 }
