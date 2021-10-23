@@ -189,15 +189,19 @@ int TakeWord()
 				q[++top] = 7;
 				result = ret;
 			}
-
+			else
+			{
+				return -3;//出现多个数字 
+			}
 		} 
-		else if(str=="block"||str=="")
+		else if(str=="block")
 		{
 			num++;
 		}
 		else
 		{
-			num++;
+			printf("这里有错\n");
+			return -4;
 		} 
 	}
 	return 0;
@@ -206,8 +210,8 @@ int main(int argc,char **argv){
 	char w;
  	int i,j;
 
-	in = fopen(argv[1],"r");
-	out = fopen(argv[2],"w");
+	in = fopen("s.txt","r");
+	out = fopen("out.txt","w");
  	int flag=0;
 	char line[105];
 	while(fgets(line,100,in)!=NULL)
@@ -245,12 +249,12 @@ int main(int argc,char **argv){
 				break;
 			}
 			w=line[k];
-  			if(w!=' '&&w!=0&&w!='\t'&&w!='\n')
+  			if(!isblank(w)&&w!='\n')
 			{
    				letter[length]=w;
    				length++;
   			} 
-  			else if(w==' '||w=='\t'||w=='\n')
+  			else if(isblank(w)||w=='\n')
   			{
   				letter[length]="block";
   				length++;
