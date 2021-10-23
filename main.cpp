@@ -249,12 +249,12 @@ int main(int argc,char **argv){
 				break;
 			}
 			w=line[k];
-  			if(!isblank(w)&&w!='\n')
+  			if(!isblank(w)&&w!='\n'&&w!='\r')
 			{
    				letter[length]=w;
    				length++;
   			} 
-  			else if(isblank(w)||w=='\n')
+  			else if(isblank(w)||w=='\n'||w=='\r')
   			{
   				letter[length]="block";
   				length++;
